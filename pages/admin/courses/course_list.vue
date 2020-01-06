@@ -1,5 +1,5 @@
 <template>
-  <v-container class="layout">
+  <v-container class="layout" v-if="!flagView">
     <v-row>
       <v-col>
         <v-card height="100%" class="mx-auto">
@@ -40,6 +40,10 @@
 <script>
 import NavigationBar from '~/components/NavigationBar.vue'
 export default {
+data: () => ({
+    list: [],
+    flagView : false
+  }),
   components: {
     NavigationBar,
   },
