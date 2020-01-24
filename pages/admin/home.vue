@@ -14,6 +14,7 @@
         :teacher="course.authorId"
         :image="course.thumbUrl"
         :slug="course.slug"
+        :class="{ 'card-disabled ': !course.enabled }"
       />
     </article>
     <client-only>
@@ -171,5 +172,9 @@ export default {
   color: #6600cc;
   padding: 1.25em 0 0.5em 1.5em;
   text-transform: uppercase;
+}
+
+.card-disabled {
+  opacity: 0.20;
 }
 </style>

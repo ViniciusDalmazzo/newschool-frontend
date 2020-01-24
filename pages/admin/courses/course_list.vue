@@ -10,7 +10,7 @@
         </v-btn>
       </header>
       <div class="body-list">
-        <v-card v-for="item in list" v-bind:key="item.id" class="v-card-border">
+        <v-card v-for="item in list" v-bind:key="item.id" class="v-card-border" :class="{ 'card-disabled ': !item.enabled }">
           <div class="content">
             <div class="img-mask">
               <img :src="item.thumbUrl" alt />
@@ -21,13 +21,16 @@
             </div>
           </div>
           <div class="group-buttons">
-            <v-btn class="btn-item bg-blue" :to="`/admin/course/${item.id}/edit`">
+            <v-btn
+              class="btn-item bg-blue"
+              :to="`/admin/course/${item.id}/edit`"
+            >
               <v-icon class="text-white">mdi-border-color</v-icon>
             </v-btn>
             <v-btn class="btn-item bg-danger" @click="deleteCourse(item.id)">
               <v-icon class="text-white">mdi-delete</v-icon>
             </v-btn>
-          </div>
+          </div>          
         </v-card>
       </div>
     </div>
@@ -41,28 +44,28 @@
   }
 </router>
 <script>
-import NavigationBar from "~/components/NavigationBar.vue";
-import http from "~/services/http/generic";
+import NavigationBar from '~/components/NavigationBar.vue';
+import http from '~/services/http/generic';
 export default {
   data: () => ({
     list: [],
     flagView: false,
-    title: "Listagem de Cursos"
+    title: 'Listagem de Cursos',
   }),
   head() {
     return {
       title: this.title,
       meta: [
         {
-          hid: "description",
-          name: "description",
-          content: "Listagem de Cursos New School"
-        }
-      ]
+          hid: 'description',
+          name: 'description',
+          content: 'Listagem de Cursos New School',
+        },
+      ],
     };
   },
   components: {
-    NavigationBar
+    NavigationBar,
   },
 
   methods: {
@@ -81,22 +84,22 @@ export default {
       http
         .delete(process.env.endpoints.COURSE, id)
         .then(res => {
-          alert("Curso excluído com sucesso!");
+          alert('Curso excluído com sucesso!');
         })
         .catch(err => {
           console.error(err);
-          alert("Erro ao excluir o curso!");
+          alert('Erro ao excluir o curso!');
         });
-    }
+    },
   },
   mounted() {
     this.getAllCourses();
-  }
+  },
 };
 </script>
 <style scoped>
 #page {
-  font-family: "Montserrat", sans-serif !important;
+  font-family: 'Montserrat', sans-serif !important;
 }
 h1 {
   font-size: 0.9rem;
@@ -132,7 +135,7 @@ p {
   font-size: 25px;
   color: #6600cc;
   font-weight: 900;
-  font-family: "Montserrat", sans-serif !important;
+  font-family: 'Montserrat', sans-serif !important;
 }
 .v-card {
   width: 90%;
@@ -170,5 +173,9 @@ p {
 }
 .content {
   display: flex;
+}
+
+.card-disabled {
+  opacity: 0.20;
 }
 </style>
