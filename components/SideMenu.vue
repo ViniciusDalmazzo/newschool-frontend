@@ -72,7 +72,8 @@ export default {
       { id: 5, label: "O que é a new school?", icon: "mdi-library-books", link: "/sobre" },
       // { id: 6, label: "Ajuda", icon: "mdi-hand-right", link: "/ajuda" },
       { id: 7, label: "Fale com a gente", icon: "mdi-phone-message-outline", link: "/contato" },
-      { id: 8, label: "Apoie a new school", icon: "mdi-volume-high", link: "/investidores" }
+      { id: 8, label: "Apoie a new school", icon: "mdi-volume-high", link: "/investidores" },
+      { id: 9, label: "Contribuidores", icon: "mdi-account-multiple", link: "/contribuidores" }
     ]
   }),
   methods: {
